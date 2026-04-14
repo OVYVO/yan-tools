@@ -1,0 +1,1 @@
+import{u as e}from"./vendor-BuCUQpq-.js";var t=`yt-recent-tools`,n=20;function r(){let r=e(t,[]);function i(e){let t=r.value.filter(t=>t!==e);t.unshift(e),r.value=t.slice(0,n)}function a(){r.value=[]}return{slugs:r,record:i,clear:a}}export{r as t};
