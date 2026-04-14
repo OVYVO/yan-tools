@@ -1,19 +1,20 @@
 <script setup lang="ts">
-import { RouterLink, useRoute } from 'vue-router'
-import { computed } from 'vue'
-import { useTheme, type ThemePreference } from '@/composables/useTheme'
-import { SITE_NAME } from '@/data/constants'
+import { RouterLink, useRoute } from "vue-router";
+import { computed } from "vue";
+import { useTheme, type ThemePreference } from "@/composables/useTheme";
+import { SITE_NAME } from "@/data/constants";
+import Logo from "/logo.png";
 
-const route = useRoute()
-const { preference, setPreference } = useTheme()
+const route = useRoute();
+const { preference, setPreference } = useTheme();
 
-const onToolPage = computed(() => route.name === 'tool')
+const onToolPage = computed(() => route.name === "tool");
 
 const themeOptions: { value: ThemePreference; label: string }[] = [
-  { value: 'light', label: '浅色' },
-  { value: 'dark', label: '深色' },
-  { value: 'system', label: '跟随系统' },
-]
+  { value: "light", label: "浅色" },
+  { value: "dark", label: "深色" },
+  { value: "system", label: "跟随系统" },
+];
 </script>
 
 <template>
@@ -27,11 +28,7 @@ const themeOptions: { value: ThemePreference; label: string }[] = [
         to="/"
         class="group flex min-w-0 items-center gap-2.5 font-semibold tracking-tight text-slate-900 dark:text-white"
       >
-        <span
-          class="flex h-9 w-9 shrink-0 items-center justify-center rounded-ui-md bg-gradient-to-br from-sky-400 to-sky-600 text-white shadow-inner ring-1 ring-white/20"
-        >
-          <span class="i-tabler-tools icon-md text-white" />
-        </span>
+        <img class="w-40px h-40px" :src="Logo" alt="logo" />
         <span class="truncate text-sm sm:text-base">{{ SITE_NAME }}</span>
       </RouterLink>
 
@@ -57,7 +54,9 @@ const themeOptions: { value: ThemePreference; label: string }[] = [
           class="flex h-10 w-10 items-center justify-center rounded-ui-md text-slate-600 transition motion-safe:duration-200 hover:bg-slate-100/90 dark:text-slate-300 dark:hover:bg-white/5 md:hidden"
           aria-label="搜索"
         >
-          <span class="i-tabler-search icon-md block text-sky-600 dark:text-sky-400" />
+          <span
+            class="i-tabler-search icon-md block text-sky-600 dark:text-sky-400"
+          />
         </RouterLink>
 
         <a
@@ -73,7 +72,11 @@ const themeOptions: { value: ThemePreference; label: string }[] = [
             :value="preference"
             class="h-10 cursor-pointer appearance-none rounded-ui-md border-0 bg-slate-100/90 py-0 pl-3 pr-9 text-sm font-medium text-slate-700 shadow-inner ring-1 ring-slate-200/80 transition motion-safe:duration-200 hover:ring-sky-300/50 dark:bg-slate-800/80 dark:text-slate-200 dark:ring-white/10"
             aria-label="主题"
-            @change="setPreference(($event.target as HTMLSelectElement).value as ThemePreference)"
+            @change="
+              setPreference(
+                ($event.target as HTMLSelectElement).value as ThemePreference
+              )
+            "
           >
             <option v-for="o in themeOptions" :key="o.value" :value="o.value">
               {{ o.label }}
