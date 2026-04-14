@@ -1,0 +1,43 @@
+{
+  "name": "yan-tools",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "typecheck": "vue-tsc -b",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@vueuse/core": "^14.2.1",
+    "cronstrue": "^3.14.0",
+    "crypto-js": "^4.2.0",
+    "diff": "^9.0.0",
+    "dompurify": "^3.3.3",
+    "fast-xml-parser": "^5.5.12",
+    "fuse.js": "^7.3.0",
+    "js-yaml": "^4.1.1",
+    "marked": "^18.0.0",
+    "pinia": "^3.0.4",
+    "prettier": "^3.8.2",
+    "qrcode": "^1.5.4",
+    "sql-formatter": "^15.7.3",
+    "vue": "^3.5.32",
+    "vue-router": "^4.6.4"
+  },
+  "devDependencies": {
+    "@iconify-json/carbon": "^1.2.20",
+    "@types/crypto-js": "^4.2.2",
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^24.12.2",
+    "@types/qrcode": "^1.5.6",
+    "@unocss/preset-icons": "^66.6.8",
+    "@vitejs/plugin-vue": "^6.0.5",
+    "@vue/tsconfig": "^0.9.1",
+    "typescript": "~5.8.3",
+    "unocss": "^66.6.8",
+    "vite": "^8.0.4",
+    "vue-tsc": "^3.2.6"
+  }
+}
