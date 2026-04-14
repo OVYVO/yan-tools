@@ -36,7 +36,7 @@ watch([a, b], run, { immediate: true })
 
 <template>
   <ToolPageTemplate :meta="meta">
-    <div class="grid gap-6 lg:grid-cols-2">
+    <div class="tool-io-grid">
       <UiTextarea v-model="a" label="文本 A" />
       <UiTextarea v-model="b" label="文本 B" />
     </div>

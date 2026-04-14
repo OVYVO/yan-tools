@@ -51,7 +51,7 @@ function parse() {
       本工具仅解码展示 Header / Payload，<strong>不验证签名</strong>，请勿用于安全决策。
     </p>
     <UiTextarea v-model="input" label="JWT 字符串" :rows="4" />
-    <div class="grid gap-6 lg:grid-cols-2">
+    <div class="tool-io-grid">
       <UiTextarea v-model="headerOut" label="Header" :readonly="true" />
       <UiTextarea v-model="payloadOut" label="Payload" :readonly="true" />
     </div>

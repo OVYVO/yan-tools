@@ -23,7 +23,7 @@ watch([angle, c1, c2], sync, { immediate: true })
 
 <template>
   <ToolPageTemplate :meta="meta">
-    <div class="grid gap-4 sm:grid-cols-3">
+    <div class="tool-triple-grid">
       <label class="text-sm">角度<input v-model.number="angle" type="range" min="0" max="360" class="block w-full" /></label>
       <label class="text-sm">颜色 A<input v-model="c1" type="color" class="mt-1 h-10 w-full" /></label>
       <label class="text-sm">颜色 B<input v-model="c2" type="color" class="mt-1 h-10 w-full" /></label>

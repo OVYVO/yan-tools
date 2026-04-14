@@ -27,7 +27,7 @@
     "vue-router": "^4.6.4"
   },
   "devDependencies": {
-    "@iconify-json/carbon": "^1.2.20",
+    "@iconify-json/tabler": "^1.2.20",
     "@types/crypto-js": "^4.2.2",
     "@types/js-yaml": "^4.0.9",
     "@types/node": "^24.12.2",

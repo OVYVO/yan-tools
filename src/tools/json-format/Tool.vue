@@ -27,7 +27,7 @@ function run(pretty: boolean) {
 
 <template>
   <ToolPageTemplate :meta="meta" :error="error">
-    <div class="grid gap-6 lg:grid-cols-2">
+    <div class="tool-io-grid">
       <UiTextarea v-model="input" label="输入 JSON" />
       <UiTextarea v-model="output" label="输出" :readonly="true" />
     </div>

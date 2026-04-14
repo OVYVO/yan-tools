@@ -19,7 +19,7 @@ usePageMeta({ title: '页面不存在', description: '未找到请求的页面�
         to="/"
         class="bento-btn-primary mt-8 inline-flex items-center justify-center gap-2 no-underline hover:!text-white"
       >
-        <span class="i-carbon-home" />
+        <span class="i-tabler-home icon-md" />
         返回首页
       </RouterLink>
     </div>

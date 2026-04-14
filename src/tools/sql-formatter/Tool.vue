@@ -29,7 +29,7 @@ run()
 
 <template>
   <ToolPageTemplate :meta="meta" :error="error">
-    <div class="grid gap-6 lg:grid-cols-2">
+    <div class="tool-io-grid">
       <UiTextarea v-model="input" label="SQL" />
       <UiTextarea v-model="output" label="结果" :readonly="true" />
     </div>

@@ -26,12 +26,12 @@ watch(
 <template>
   <ToolPageTemplate :meta="meta">
     <p class="text-sm text-slate-600 dark:text-slate-400">使用 marked 渲染并经 DOMPurify 消毒，请勿粘贴不信任内容。</p>
-    <div class="grid gap-6 lg:grid-cols-2">
+    <div class="tool-io-grid">
       <UiTextarea v-model="input" label="Markdown" />
       <div>
         <p class="mb-1.5 text-sm font-medium text-slate-600 dark:text-slate-300">预览</p>
         <div
-          class="prose-tool min-h-64 rounded-xl border border-slate-200 bg-white p-4 text-slate-800 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
+          class="prose-tool min-h-64 min-w-0 rounded-ui-lg border border-[var(--ui-border-subtle)] bg-[var(--ui-bg-elevated)] p-4 text-slate-800 dark:border-white/10 dark:bg-slate-900 dark:text-slate-100"
           v-html="html"
         />
       </div>

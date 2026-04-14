@@ -38,21 +38,21 @@ usePageMeta(
 </script>
 
 <template>
-  <div class="relative mx-auto max-w-7xl px-3 sm:px-5">
+  <div class="bento-container">
     <template v-if="category">
-      <header class="bento-surface mb-8 p-6 sm:p-8">
+      <header class="bento-surface mb-8 box-border min-w-0 w-full max-w-full overflow-x-clip p-6 sm:p-8">
         <div class="flex items-start gap-4">
           <div
-            class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-sky-500/20 to-indigo-500/10 text-sky-600 ring-1 ring-sky-500/25 dark:text-sky-300"
+            class="flex h-12 w-12 shrink-0 items-center justify-center rounded-ui-lg bg-gradient-to-br from-sky-500/20 to-indigo-500/10 text-sky-600 ring-1 ring-sky-500/25 dark:text-sky-300"
           >
-            <span class="i-carbon-category text-2xl" />
+            <span class="i-tabler-layout-grid text-2xl" />
           </div>
           <div>
             <p class="bento-label">Category</p>
-            <h1 class="mt-2 text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
+            <h1 class="mt-2 text-2xl font-bold tracking-tight text-[var(--ui-text-primary)] sm:text-3xl">
               {{ category.name }}
             </h1>
-            <p class="mt-2 max-w-2xl text-[0.95rem] leading-relaxed text-slate-600 dark:text-slate-300">
+            <p class="text-body mt-2 max-w-2xl">
               {{ category.description }}
             </p>
           </div>
@@ -66,7 +66,7 @@ usePageMeta(
           <span class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">排序</span>
           <select
             v-model="sortBy"
-            class="h-10 rounded-xl border-0 bg-slate-100/90 px-3 text-sm font-medium text-slate-800 shadow-inner ring-1 ring-slate-200/80 dark:bg-slate-800/80 dark:text-slate-100 dark:ring-white/10"
+            class="h-10 rounded-ui-md border-0 bg-slate-100/90 px-3 text-sm font-medium text-slate-800 shadow-inner ring-1 ring-slate-200/80 dark:bg-slate-800/80 dark:text-slate-100 dark:ring-white/10"
           >
             <option value="default">默认</option>
             <option value="name">名称</option>
@@ -103,7 +103,7 @@ usePageMeta(
         </div>
       </div>
 
-      <div v-if="tools.length" class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
+      <div v-if="tools.length" class="bento-tool-grid">
         <ToolCard v-for="t in tools" :key="t.slug" :tool="t" />
       </div>
       <EmptyState v-else title="该标签下暂无工具" hint="请更换标签筛选" />

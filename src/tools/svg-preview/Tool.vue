@@ -27,12 +27,12 @@ watch(input, sync, { immediate: true })
 <template>
   <ToolPageTemplate :meta="meta">
     <p class="text-sm text-slate-600 dark:text-slate-400">SVG 在本地解析预览；压缩仅去除多余空白，请自行检查语义。</p>
-    <div class="grid gap-6 lg:grid-cols-2">
+    <div class="tool-io-grid">
       <UiTextarea v-model="input" label="SVG 源码" :rows="12" />
       <div>
         <p class="mb-1.5 text-sm font-medium text-slate-600 dark:text-slate-300">预览</p>
         <div
-          class="flex min-h-48 items-center justify-center rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-900"
+          class="flex min-h-48 min-w-0 items-center justify-center rounded-ui-lg border border-[var(--ui-border-subtle)] bg-[var(--ui-bg-elevated)] p-4 dark:border-white/10 dark:bg-slate-900"
           v-html="preview"
         />
       </div>

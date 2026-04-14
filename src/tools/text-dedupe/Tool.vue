@@ -35,7 +35,7 @@ watch([input, skipEmpty], run, { immediate: true })
       <input v-model="skipEmpty" type="checkbox" />
       忽略空行参与去重
     </label>
-    <div class="grid gap-6 lg:grid-cols-2">
+    <div class="tool-io-grid">
       <UiTextarea v-model="input" label="输入" />
       <UiTextarea v-model="output" label="去重后" :readonly="true" />
     </div>

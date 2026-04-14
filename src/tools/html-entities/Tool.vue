@@ -27,8 +27,10 @@ function decode() {
 
 <template>
   <ToolPageTemplate :meta="meta">
-    <UiTextarea v-model="input" label="输入" />
-    <UiTextarea v-model="output" label="输出" :readonly="true" />
+    <div class="tool-io-grid">
+      <UiTextarea v-model="input" label="输入" />
+      <UiTextarea v-model="output" label="输出" :readonly="true" />
+    </div>
     <div class="flex flex-wrap gap-2">
       <button type="button" class="bento-btn-primary" @click="encode">
         编码实体

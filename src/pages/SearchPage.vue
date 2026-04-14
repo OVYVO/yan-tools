@@ -30,25 +30,25 @@ const hasQuery = computed(() => query.value.trim().length > 0)
 </script>
 
 <template>
-  <div class="relative mx-auto max-w-7xl px-3 sm:px-5">
+  <div class="bento-container">
     <div class="bento-surface mb-10 p-5 sm:p-6">
       <label class="bento-label" for="tool-search">Search</label>
       <div class="relative mt-4">
         <span
-          class="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 i-carbon-search text-xl text-sky-500/70"
+          class="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 i-tabler-search icon-md text-sky-500/70"
         />
         <input
           id="tool-search"
           v-model="query"
           type="search"
           placeholder="输入名称、标签或关键词…"
-          class="w-full rounded-2xl border border-slate-200/90 bg-white/90 py-3.5 pl-12 pr-4 text-slate-800 shadow-inner outline-none transition placeholder:text-slate-400 focus:border-sky-400/50 focus:shadow-[0_0_0_3px_rgba(14,165,233,0.12)] dark:border-white/10 dark:bg-slate-950/50 dark:text-slate-100"
+          class="w-full rounded-ui-lg border border-slate-200/90 bg-white/90 py-3.5 pl-12 pr-4 text-slate-800 shadow-inner outline-none transition motion-safe:duration-200 placeholder:text-slate-400 focus:border-sky-400/50 focus:shadow-[0_0_0_3px_rgba(14,165,233,0.12)] dark:border-white/10 dark:bg-slate-950/50 dark:text-slate-100"
           autocomplete="off"
         />
       </div>
     </div>
 
-    <div v-if="results.length" class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
+    <div v-if="results.length" class="bento-tool-grid">
       <ToolCard v-for="t in results" :key="t.slug" :tool="t" />
     </div>
     <EmptyState

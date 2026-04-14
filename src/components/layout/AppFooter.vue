@@ -4,9 +4,11 @@ import { SITE_NAME } from '@/data/constants'
 </script>
 
 <template>
-  <footer class="px-3 pb-6 pt-2 sm:px-5 sm:pb-8">
+  <footer
+    class="border-t border-[var(--ui-border-subtle)] bg-[var(--ui-bg-base)]/60 pb-8 pt-10 sm:pb-10"
+  >
     <div
-      class="bento-surface mx-auto flex max-w-7xl flex-col gap-6 rounded-3xl px-5 py-8 sm:flex-row sm:items-center sm:justify-between sm:px-8"
+      class="site-content-width flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between"
     >
       <div>
         <p class="font-semibold tracking-tight text-slate-800 dark:text-slate-100">{{ SITE_NAME }}</p>

@@ -49,7 +49,7 @@ run()
 
 <template>
   <ToolPageTemplate :meta="meta">
-    <div class="grid gap-3 sm:grid-cols-2">
+    <div class="tool-field-grid">
       <label class="flex items-center gap-2 text-sm"><input v-model="useUpper" type="checkbox" /> 大写 A-Z</label>
       <label class="flex items-center gap-2 text-sm"><input v-model="useLower" type="checkbox" /> 小写 a-z</label>
       <label class="flex items-center gap-2 text-sm"><input v-model="useNum" type="checkbox" /> 数字</label>

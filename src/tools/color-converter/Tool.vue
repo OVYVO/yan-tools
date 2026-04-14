@@ -78,7 +78,7 @@ watch(hex, sync, { immediate: true })
       <input v-model="hex" type="text" class="rounded-lg border px-3 py-2 font-mono dark:border-slate-600 dark:bg-slate-900" />
       <div class="h-12 w-12 rounded-lg border" :style="{ backgroundColor: hex }" />
     </div>
-    <div class="grid gap-4 lg:grid-cols-2">
+    <div class="tool-io-grid">
       <UiTextarea v-model="rgb" label="RGB" :readonly="true" :rows="2" />
       <UiTextarea v-model="hsl" label="HSL" :readonly="true" :rows="2" />
     </div>

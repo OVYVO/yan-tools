@@ -30,8 +30,10 @@ run()
 <template>
   <ToolPageTemplate :meta="meta" :error="error">
     <p class="text-sm text-slate-600 dark:text-slate-400">使用 cronstrue 生成本地化描述（5 段标准 Cron）。</p>
-    <UiTextarea v-model="expr" label="Cron 表达式" :rows="2" />
-    <UiTextarea v-model="human" label="说明" :readonly="true" :rows="3" />
+    <div class="tool-io-grid">
+      <UiTextarea v-model="expr" label="Cron 表达式" :rows="2" />
+      <UiTextarea v-model="human" label="说明" :readonly="true" :rows="3" />
+    </div>
     <div class="flex flex-wrap gap-2">
       <button type="button" class="bento-btn-primary" @click="run">
         解析

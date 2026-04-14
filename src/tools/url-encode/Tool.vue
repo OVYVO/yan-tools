@@ -34,8 +34,10 @@ function decode() {
 
 <template>
   <ToolPageTemplate :meta="meta" :error="error">
-    <UiTextarea v-model="input" label="文本" />
-    <UiTextarea v-model="output" label="结果" :readonly="true" />
+    <div class="tool-io-grid">
+      <UiTextarea v-model="input" label="文本" />
+      <UiTextarea v-model="output" label="结果" :readonly="true" />
+    </div>
     <div class="flex flex-wrap gap-2">
       <button type="button" class="bento-btn-primary" @click="encode">
         编码

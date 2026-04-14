@@ -3,18 +3,66 @@ html {
   scroll-behavior: smooth;
 }
 
+/* 语义色与设计令牌（与 ui-style-spec 对齐；浅色/深色等价） */
+:root {
+  --ui-bg-base: #f0f4f9;
+  --ui-bg-elevated: rgb(255 255 255 / 0.88);
+  --ui-border-subtle: rgb(226 232 240 / 0.9);
+  --ui-text-primary: rgb(15 23 42);
+  --ui-text-secondary: rgb(71 85 105);
+  --ui-text-muted: rgb(148 163 184);
+  --ui-accent: rgb(14 165 233);
+  --ui-danger: rgb(239 68 68);
+  --ui-shadow-card: 0 2px 16px -8px rgb(15 23 42 / 0.1);
+  --ui-shadow-card-hover: 0 10px 28px -12px rgb(14 165 233 / 0.22);
+  --ui-radius-sm: 6px;
+  --ui-radius-md: 10px;
+  --ui-radius-lg: 14px;
+}
+
+.dark {
+  --ui-bg-base: #0a0c10;
+  --ui-bg-elevated: rgb(15 23 42 / 0.55);
+  --ui-border-subtle: rgb(255 255 255 / 0.08);
+  --ui-text-primary: rgb(248 250 252);
+  --ui-text-secondary: rgb(203 213 225);
+  --ui-text-muted: rgb(148 163 184);
+  --ui-accent: rgb(56 189 248);
+  --ui-danger: rgb(248 113 113);
+  --ui-shadow-card: 0 4px 24px -12px rgb(0 0 0 / 0.45);
+  --ui-shadow-card-hover: 0 12px 40px -16px rgb(14 165 233 / 0.12);
+}
+
+/* RouterLink 渲染为 <a>，避免浏览器默认下划线；需要下划线请用 .bento-link 等显式类 */
+a {
+  text-decoration: none;
+}
+a:focus-visible {
+  outline: 2px solid rgb(14 165 233 / 0.45);
+  outline-offset: 2px;
+}
+
 body {
   margin: 0;
   font-family:
     ui-sans-serif,
     system-ui,
     -apple-system,
-    'Segoe UI',
+    "Segoe UI",
     Roboto,
-    'PingFang SC',
-    'Microsoft YaHei',
+    "PingFang SC",
+    "Microsoft YaHei",
     sans-serif;
   -webkit-font-smoothing: antialiased;
+  background-color: var(--ui-bg-base);
+  color: var(--ui-text-primary);
+}
+
+/* 等宽：代码、哈希、时间戳 */
+.font-mono-tool {
+  font-family:
+    ui-monospace, "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
 }
 
 /* Bento 页面氛围：柔和光晕 + 细点网格（仅装饰层） */
@@ -26,7 +74,7 @@ body {
   overflow: hidden;
 }
 .bento-backdrop::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: -20% -10% auto -10%;
   height: 55%;
@@ -44,22 +92,173 @@ body {
   );
 }
 .bento-backdrop::after {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(rgb(148 163 184 / 0.22) 1px, transparent 1px);
+  background-image: radial-gradient(
+    rgb(148 163 184 / 0.22) 1px,
+    transparent 1px
+  );
   background-size: 24px 24px;
   mask-image: linear-gradient(to bottom, black 0%, black 40%, transparent 100%);
   opacity: 0.45;
 }
 .dark .bento-backdrop::after {
-  background-image: radial-gradient(rgb(148 163 184 / 0.12) 1px, transparent 1px);
+  background-image: radial-gradient(
+    rgb(148 163 184 / 0.12) 1px,
+    transparent 1px
+  );
   opacity: 0.35;
 }
 
 .bento-shell {
   position: relative;
   z-index: 1;
+  min-width: 0;
+  overflow-x: clip;
+}
+
+/* 工具页双栏 Grid：minmax(0,1fr) 防止长单词/预格式化内容撑开整行超出 max-width */
+.tool-io-grid {
+  grid-template-columns: minmax(0, 1fr);
+  column-gap: 1.25rem;
+  row-gap: 1.25rem;
+}
+@media (min-width: 768px) {
+  .tool-io-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+}
+.tool-io-grid > * {
+  min-width: 0;
+  max-width: 100%;
+}
+
+/*
+ * Bento 卡片渐变：12 套深色系双色叠层（工具卡 + 首页分类等共用 .bento-cell-gradient--gN）
+ * 浅色模式：中高饱和度主色 + 较低透明度，层次更丰富
+ * 深色模式：亮一度 Brand 色 + 略高透明度，避免发灰
+ */
+.bento-cell-gradient--g0 {
+  background-image:
+    linear-gradient(125deg, rgb(3 105 161 / 0.26) 0%, transparent 48%),
+    linear-gradient(208deg, rgb(67 56 202 / 0.2) 0%, transparent 58%);
+}
+.bento-cell-gradient--g1 {
+  background-image:
+    linear-gradient(132deg, rgb(109 40 217 / 0.24) 0%, transparent 50%),
+    linear-gradient(200deg, rgb(190 24 93 / 0.18) 0%, transparent 56%);
+}
+.bento-cell-gradient--g2 {
+  background-image:
+    linear-gradient(122deg, rgb(4 120 87 / 0.25) 0%, transparent 52%),
+    linear-gradient(212deg, rgb(14 116 144 / 0.2) 0%, transparent 54%);
+}
+.bento-cell-gradient--g3 {
+  background-image:
+    linear-gradient(138deg, rgb(180 83 9 / 0.26) 0%, transparent 50%),
+    linear-gradient(218deg, rgb(194 65 12 / 0.2) 0%, transparent 56%);
+}
+.bento-cell-gradient--g4 {
+  background-image:
+    linear-gradient(128deg, rgb(67 56 202 / 0.24) 0%, transparent 51%),
+    linear-gradient(205deg, rgb(109 40 217 / 0.19) 0%, transparent 55%);
+}
+.bento-cell-gradient--g5 {
+  background-image:
+    linear-gradient(135deg, rgb(15 118 110 / 0.25) 0%, transparent 49%),
+    linear-gradient(225deg, rgb(8 145 178 / 0.2) 0%, transparent 57%);
+}
+.bento-cell-gradient--g6 {
+  background-image:
+    linear-gradient(126deg, rgb(190 18 60 / 0.22) 0%, transparent 53%),
+    linear-gradient(210deg, rgb(126 34 206 / 0.18) 0%, transparent 52%);
+}
+.bento-cell-gradient--g7 {
+  background-image:
+    linear-gradient(130deg, rgb(109 40 217 / 0.23) 0%, transparent 50%),
+    linear-gradient(218deg, rgb(29 78 216 / 0.2) 0%, transparent 56%);
+}
+.bento-cell-gradient--g8 {
+  background-image:
+    linear-gradient(124deg, rgb(63 98 18 / 0.24) 0%, transparent 51%),
+    linear-gradient(206deg, rgb(21 128 61 / 0.2) 0%, transparent 55%);
+}
+.bento-cell-gradient--g9 {
+  background-image:
+    linear-gradient(131deg, rgb(157 23 77 / 0.22) 0%, transparent 50%),
+    linear-gradient(202deg, rgb(219 39 119 / 0.18) 0%, transparent 57%);
+}
+.bento-cell-gradient--g10 {
+  background-image:
+    linear-gradient(136deg, rgb(71 85 105 / 0.26) 0%, transparent 48%),
+    linear-gradient(216deg, rgb(67 56 202 / 0.18) 0%, transparent 56%);
+}
+.bento-cell-gradient--g11 {
+  background-image:
+    linear-gradient(127deg, rgb(14 116 144 / 0.25) 0%, transparent 50%),
+    linear-gradient(220deg, rgb(29 78 216 / 0.2) 0%, transparent 54%);
+}
+
+.dark .bento-cell-gradient--g0 {
+  background-image:
+    linear-gradient(125deg, rgb(56 189 248 / 0.35) 0%, transparent 45%),
+    linear-gradient(208deg, rgb(129 140 248 / 0.28) 0%, transparent 58%);
+}
+.dark .bento-cell-gradient--g1 {
+  background-image:
+    linear-gradient(132deg, rgb(167 139 250 / 0.32) 0%, transparent 48%),
+    linear-gradient(200deg, rgb(244 114 182 / 0.26) 0%, transparent 56%);
+}
+.dark .bento-cell-gradient--g2 {
+  background-image:
+    linear-gradient(122deg, rgb(52 211 153 / 0.34) 0%, transparent 50%),
+    linear-gradient(212deg, rgb(34 211 238 / 0.26) 0%, transparent 54%);
+}
+.dark .bento-cell-gradient--g3 {
+  background-image:
+    linear-gradient(138deg, rgb(251 191 36 / 0.32) 0%, transparent 48%),
+    linear-gradient(218deg, rgb(251 146 60 / 0.28) 0%, transparent 55%);
+}
+.dark .bento-cell-gradient--g4 {
+  background-image:
+    linear-gradient(128deg, rgb(129 140 248 / 0.33) 0%, transparent 49%),
+    linear-gradient(205deg, rgb(167 139 250 / 0.26) 0%, transparent 55%);
+}
+.dark .bento-cell-gradient--g5 {
+  background-image:
+    linear-gradient(135deg, rgb(45 212 191 / 0.34) 0%, transparent 47%),
+    linear-gradient(225deg, rgb(34 211 238 / 0.28) 0%, transparent 57%);
+}
+.dark .bento-cell-gradient--g6 {
+  background-image:
+    linear-gradient(126deg, rgb(251 113 133 / 0.3) 0%, transparent 52%),
+    linear-gradient(210deg, rgb(192 132 252 / 0.26) 0%, transparent 52%);
+}
+.dark .bento-cell-gradient--g7 {
+  background-image:
+    linear-gradient(130deg, rgb(167 139 250 / 0.32) 0%, transparent 49%),
+    linear-gradient(218deg, rgb(96 165 250 / 0.3) 0%, transparent 55%);
+}
+.dark .bento-cell-gradient--g8 {
+  background-image:
+    linear-gradient(124deg, rgb(163 230 53 / 0.3) 0%, transparent 50%),
+    linear-gradient(206deg, rgb(74 222 128 / 0.28) 0%, transparent 54%);
+}
+.dark .bento-cell-gradient--g9 {
+  background-image:
+    linear-gradient(131deg, rgb(244 114 182 / 0.3) 0%, transparent 49%),
+    linear-gradient(202deg, rgb(249 168 212 / 0.24) 0%, transparent 56%);
+}
+.dark .bento-cell-gradient--g10 {
+  background-image:
+    linear-gradient(136deg, rgb(148 163 184 / 0.32) 0%, transparent 47%),
+    linear-gradient(216deg, rgb(129 140 248 / 0.26) 0%, transparent 56%);
+}
+.dark .bento-cell-gradient--g11 {
+  background-image:
+    linear-gradient(127deg, rgb(34 211 238 / 0.34) 0%, transparent 48%),
+    linear-gradient(220deg, rgb(96 165 250 / 0.3) 0%, transparent 54%);
 }
 
 /* 区块标题：Bento 常见的细标签 + 装饰线 */
@@ -76,14 +275,11 @@ body {
   border-radius: 9999px;
 }
 .bento-section-head__text {
-  font-size: 0.7rem;
+  font-size: 1rem;
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgb(100 116 139);
-}
-.dark .bento-section-head__text {
-  color: rgb(148 163 184);
+  color: var(--ui-text-muted);
 }
 
 /* Markdown 预览 */
@@ -93,9 +289,22 @@ body {
 .prose-tool pre {
   overflow-x: auto;
   padding: 0.75rem 1rem;
-  border-radius: 0.75rem;
+  border-radius: var(--ui-radius-md);
   background: rgb(15 23 42 / 0.06);
 }
 .dark .prose-tool pre {
   background: rgb(148 163 184 / 0.12);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .tool-card,
+  .bento-surface-hover {
+    transition-duration: 0.01ms !important;
+  }
+  .tool-card {
+    transform: none !important;
+  }
 }

@@ -33,7 +33,7 @@ watch([input, trimLines, dropEmpty, numberLines], run, { immediate: true })
       <label class="flex items-center gap-2"><input v-model="dropEmpty" type="checkbox" /> 删除空行</label>
       <label class="flex items-center gap-2"><input v-model="numberLines" type="checkbox" /> 行号</label>
     </div>
-    <div class="grid gap-6 lg:grid-cols-2">
+    <div class="tool-io-grid">
       <UiTextarea v-model="input" label="输入" />
       <UiTextarea v-model="output" label="结果" :readonly="true" />
     </div>

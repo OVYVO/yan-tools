@@ -59,7 +59,7 @@ applyFromTs()
         当前时间
       </button>
     </div>
-    <div class="grid gap-4 lg:grid-cols-2">
+    <div class="tool-io-grid">
       <UiTextarea v-model="localStr" label="本地时间" :readonly="true" :rows="3" />
       <UiTextarea v-model="utcStr" label="UTC 字符串" :readonly="true" :rows="3" />
     </div>

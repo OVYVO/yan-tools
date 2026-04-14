@@ -34,8 +34,10 @@ function fromBase64() {
 
 <template>
   <ToolPageTemplate :meta="meta" :error="error">
-    <UiTextarea v-model="input" label="输入" />
-    <UiTextarea v-model="output" label="输出" :readonly="true" />
+    <div class="tool-io-grid">
+      <UiTextarea v-model="input" label="输入" />
+      <UiTextarea v-model="output" label="输出" :readonly="true" />
+    </div>
     <div class="flex flex-wrap gap-2">
       <button type="button" class="bento-btn-primary" @click="toBase64">
         编码为 Base64
