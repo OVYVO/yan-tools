@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:pages": "node scripts/gh-pages.mjs build",
+    "preview:pages": "node scripts/gh-pages.mjs preview",
     "typecheck": "vue-tsc -b",
     "preview": "vite preview"
   },
